@@ -3,6 +3,24 @@ const inquirer = require("inquirer");
 const mysql = require("mysql2");
 const cfonts = require('cfonts');
 
+// need to create a connection to mysql
+const connection = mysql.createConnection({
+    host: "localhost",
+    port: 3306,
+    user: "root",
+    password: "password",
+    database: "employeeTracker_db",
+});
+
+
+// database connection
+connection.connect((err) => {
+    if (err) throw err;
+    console.log("Database connected!");
+    // start the application
+    start();
+});
+
 
 // function to start the employee tracker and prompts
 function start() {
